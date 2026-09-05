@@ -8,3 +8,10 @@ When searching you get the option to:
 - Search Google eg. "Local fuel prices"
 - Search Maps eg. "Directions to closest fuel station"
 - Open Link eg. "Amazon.com" 
+
+# TODO
+Folllowing items outstanding:
+- Remove some funtions that are not used in extenstion.js
+- Work out dependencies for (ie chrome needs to be installed, icons?)
+- Add a pref.js, to allow the user to turn on/off which options
+- Add additional functionality, like search google.
