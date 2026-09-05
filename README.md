@@ -11,7 +11,7 @@ When searching you get the option to:
 
 # TODO
 Folllowing items outstanding:
-- Remove some funtions that are not used in extenstion.js
+- Remove some funtions that are not used in extension.js
 - Work out dependencies for example, chrome needs to be installed, icons?
 - Add a pref.js, to allow the user to turn on/off which options
 - Add additional functionality, like search google.
