@@ -1,10 +1,10 @@
 {
-  "_generated": "Google Search",
-  "description": "Adds a search provider to Open links and Search Google.",
+  "_generated": "Chrome Search",
+  "description": "Adds a search provider to Open URL links and do Chrome Searches.",
   "name": "Search Provider",
   "shell-version": [
-    "50",
-    "51"
+    "49",
+    "50"
   ],
   "url": "https://github.com/",
   "uuid": "SearchProvider@github.com",
