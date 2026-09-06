@@ -1,7 +1,6 @@
-# Chrome Search Extension
-This extension adds a Chrome search provider to Gnome.
-
-![Chrome Search Providers](providers.png)
+# Search Provider - Gnome Search
+This extension adds a Chrome search provider to Gnome Search
+![Chrome Search Providers](assets/providers.png)
 
 When searching you get the option to:
 - Ask Gemini eg. "Why is fuel so expensive?"
@@ -9,9 +8,12 @@ When searching you get the option to:
 - Search Maps eg. "Directions to closest fuel station"
 - Open Link eg. "Amazon.com" 
 
+Using the Gnome extension settings menu: 
+- Toggle which google capabilities are enabled.
+- Get help on how to use the search provider.
+
 # TODO
 Folllowing items outstanding:
-- Remove some funtions that are not used in extension.js
-- Work out dependencies for example, chrome needs to be installed, icons?
-- Add a pref.js, to allow the user to turn on/off which options
-- Add additional functionality, like search google.
+- Add YouTube (https://www.youtube.com/)
+- Add Google News (https://news.google.com/search?q=Latest)
+- Add Google Shopping (https://www.google.com/search?q=Latest&tbm=shop)

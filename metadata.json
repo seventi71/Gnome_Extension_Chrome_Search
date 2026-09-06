@@ -1,8 +1,13 @@
 {
-  "_generated": "Chrome Search",
-  "description": "Adds a search provider to Open URL links and do Chrome Searches.",
   "name": "Search Provider",
+  "description": "Use shell search to launch Google search.",
+  "original-authors": "Christopher <seventi7@gmail.com>",
+  "settings-schema": "org.gnome.shell.extensions.touchpadonoff",
   "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
     "49",
     "50"
   ],

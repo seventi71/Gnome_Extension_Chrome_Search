@@ -4,6 +4,8 @@ import Gio from 'gi://Gio';
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
+let my_prefs;
+
 class ChromeSearchProvider {
     constructor(extension) {
         this._extension = extension;
@@ -17,10 +19,18 @@ class ChromeSearchProvider {
                   return /^https?:\/\//.test(q) ? q : `http://${q}`;
                 }
             },
-            'google': {
+            'gemini': {
+                name: 'Ask Gemini',
+                description: 'Ask Gemini a question online',
+                icon: 'gemini',
+                getQuery: function (terms) {
+                  return `https://www.google.com/search?udm=50&aep=12&q=${terms.join(" ")}`;
+                }
+            },
+            'search': {
                 name: 'Search Google',
                 description: 'Search online with Google',
-                icon: 'google',
+                icon: 'search',
                 getQuery: function (terms) {
                   return `https://www.google.com/search?q=${terms.join(" ")}`;
                 }
@@ -28,17 +38,9 @@ class ChromeSearchProvider {
             'maps': {
                 name: 'Search Maps',
                 description: 'Search online with Maps',
-                icon: 'chrome-mnhkaebcjjhencmpkapnbdaogjamfbcj-Default',
+                icon: 'maps',
                 getQuery: function (terms) {
                   return `https://maps.google.com/?q=${terms.join(" ")}`;
-                }
-            },
-            'gemini': {
-                name: 'Ask Gemini',
-                description: 'Ask Gemini a question online',
-                icon: 'chrome-akmpjlhfgienmcamdndncbdfjpniighc-Default',
-                getQuery: function (terms) {
-                  return `https://www.google.com/search?udm=50&aep=12&q=${terms.join(" ")}`;
                 }
             },
         };
@@ -141,7 +143,7 @@ class ChromeSearchProvider {
                     // clipboardText: 'Content for the clipboard',
                     createIcon: size => {
                         return new St.Icon({
-                            icon_name: provider.icon,
+                            gicon: Gio.icon_new_for_string(this._extension.path + '/assets/' + provider.icon + '.png'),
                             width: size * scaleFactor,
                             height: size * scaleFactor,
                         });
@@ -170,12 +172,25 @@ class ChromeSearchProvider {
      * @param {Gio.Cancellable} cancellable - A cancellable for the operation
      * @returns {Promise<string[]>} A list of result identifiers
      */
-    getInitialResultSet(terms, cancellable) {
-      const identifiers = [];
 
+    getInitialResultSet(terms, cancellable) {
+        const identifiers = [];
+
+        let show_gemini=my_prefs.get_boolean('show-gemini');
+        let show_search=my_prefs.get_boolean('show-search');
+        let show_maps=my_prefs.get_boolean('show-maps');
+
+      if (show_gemini) {
       identifiers.push('gemini');
-      identifiers.push('google');
+      }
+       if (show_search) {
+      identifiers.push('search');
+      }
+      if (show_maps) {
       identifiers.push('maps');
+      }
+
+      // always show open-link
       identifiers.push('open-link');
 
       return new Promise((resolve, reject) => {
@@ -237,11 +252,13 @@ class ChromeSearchProvider {
 
 export default class ChromeSearchProviderExtension extends Extension {
     enable() {
+        my_prefs= this.getSettings();
         this._provider = new ChromeSearchProvider(this);
         Main.overview.searchController.addProvider(this._provider);
     }
 
     disable() {
+        my_prefs = null;
         Main.overview.searchController.removeProvider(this._provider);
         this._provider = null;
     }
