@@ -3,17 +3,22 @@ This extension adds a Chrome search provider to Gnome Search
 ![Chrome Search Providers](assets/providers.png)
 
 When searching you get the option to:
-- Ask Gemini eg. "Why is fuel so expensive?"
-- Search Google eg. "Local fuel prices"
-- Search Maps eg. "Directions to closest fuel station"
-- Open Link eg. "Amazon.com" 
+- 'Open link' to open a link eg. "google.com" 
+- 'Search Google' to search a topic eg. "Local fuel prices"
+- 'Ask Gemini' to ask a question eg. "Why is fuel so expensive?"
+- 'Search Maps' to search a location eg. "Directions closest fuel station"
 
 Using the Gnome extension settings menu: 
 - Toggle which google capabilities are enabled.
-- Get help on how to use the search provider.
+- Get help on how to use the search provider
 
-# TODO
-Folllowing items outstanding:
-- Add YouTube (https://www.youtube.com/)
-- Add Google News (https://news.google.com/search?q=Latest)
-- Add Google Shopping (https://www.google.com/search?q=Latest&tbm=shop)
+# Usage Tip: 
+After enabling this, disable and re-enable search
+providers in Gnome settings to move this one to the top.
+
+# Credits:
+This extension was created using Zed and Inkling and is open source.
+Some of the code was reused from the extension 'Browser Search Provider'
+Some of the preferences code was reused from 'Toggle touchpad on or off'
+
+This code lives on github at 'https://github.com/seventi71/Search-Provider'
