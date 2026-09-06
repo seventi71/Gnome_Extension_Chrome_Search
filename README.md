@@ -13,12 +13,12 @@ Using the Gnome extension settings menu:
 - Get help on how to use the search provider
 
 # Usage Tip: 
-After enabling this, disable and re-enable search
-providers in Gnome settings to move this one to the top.
+After enabling this, disable and re-enable search providers,
+in Gnome settings to move this one to the top.
 
 # Installation:
 Download the Zip file and unzip it.
-Copy the unzipped folder to ~/.local/share/gnome-shell/extensions
+Copy the unzipped folder to '~/.local/share/gnome-shell/extensions'.
 Logout of Gnome and login, then go to extension and enable.
 
 # Credits:
