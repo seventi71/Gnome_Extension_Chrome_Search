@@ -16,6 +16,11 @@ Using the Gnome extension settings menu:
 After enabling this, disable and re-enable search
 providers in Gnome settings to move this one to the top.
 
+# Installation:
+Download the Zip file and unzip it.
+Copy the unzipped folder to ~/.local/share/gnome-shell/extensions
+Logout of Gnome and login, then go to extension and enable.
+
 # Credits:
 This extension was created using Zed and Inkling and is open source.
 Some of the code was reused from the extension 'Browser Search Provider'
