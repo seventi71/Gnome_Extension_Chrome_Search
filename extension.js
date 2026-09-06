@@ -4,6 +4,13 @@ import Gio from 'gi://Gio';
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
+/**
+ * This extension was created using Zed and Inkling and is open source.
+ * Some of the code was reused the extension 'Browser Search Provider'
+ * Some of the preferences code was reused from 'Toggle touchpad on or off'
+ * This code lives on github at 'https://github.com/seventi71/Search-Provider'
+ */
+
 let my_prefs;
 
 class ChromeSearchProvider {
@@ -35,6 +42,22 @@ class ChromeSearchProvider {
                   return `https://www.google.com/search?q=${terms.join(" ")}`;
                 }
             },
+            'news': {
+                name: 'Search News',
+                description: 'Search Google News',
+                icon: 'news',
+                getQuery: function (terms) {
+                  return `https://news.google.com/search?q=${terms.join(" ")}`;
+                }
+            },
+            'youtube': {
+                name: 'Search YouTube',
+                description: 'Search YouTube',
+                icon: 'youtube',
+                getQuery: function (terms) {
+                  return `https://www.youtube.com/results?search_query=${terms.join(" ")}`;
+                }
+            },
             'maps': {
                 name: 'Search Maps',
                 description: 'Search online with Maps',
@@ -48,49 +71,45 @@ class ChromeSearchProvider {
 
     /**
      * The application of the provider.
-     *
      * Applications will return a `Gio.AppInfo` representing themselves.
      * Extensions will usually return `null`.
      *
      * @type {Gio.AppInfo}
      */
-    get appInfo() {
+      get appInfo() {
         return null;
     }
 
     /**
      * Whether the provider offers detailed results.
-     *
      * Applications will return `true` if they have a way to display more
      * detailed or complete results. Extensions will usually return `false`.
      *
      * @type {boolean}
      */
-    get canLaunchSearch() {
+      get canLaunchSearch() {
         return false;
     }
 
     /**
      * The unique ID of the provider.
-     *
      * Applications will return their application ID. Extensions will usually
      * return their UUID.
      *
      * @type {string}
      */
-    get id() {
+      get id() {
         return this._extension.uuid;
     }
 
     /**
      * Launch the search result.
-     *
      * This method is called when a search provider result is activated.
      *
      * @param {string} result - The result identifier
      * @param {string[]} terms - The search terms
      */
-    activateResult(result, terms) {
+      activateResult(result, terms) {
         const query = this.providers[result].getQuery(terms);
 
         Gio.AppInfo.launch_default_for_uri(query, null);
@@ -98,16 +117,14 @@ class ChromeSearchProvider {
 
     /**
      * Create a result object.
-     *
      * This method is called to create an actor to represent a search result.
-     *
      * Implementations may return any `Clutter.Actor` to serve as the display
      * result, or `null` for the default implementation.
      *
      * @param {ResultMeta} meta - A result metadata object
      * @returns {Clutter.Actor|null} An actor for the result
      */
-    createResultObject(meta) {
+      createResultObject(meta) {
         console.debug(`createResultObject(${meta.id})`);
 
         return null;
@@ -115,9 +132,7 @@ class ChromeSearchProvider {
 
     /**
      * Get result metadata.
-     *
      * This method is called to get a `ResultMeta` for each identifier.
-     *
      * If @cancellable is triggered, this method should throw an error.
      *
      * @async
@@ -125,7 +140,7 @@ class ChromeSearchProvider {
      * @param {Gio.Cancellable} cancellable - A cancellable for the operation
      * @returns {Promise<ResultMeta[]>} A list of result metadata objects
      */
-    getResultMetas(results, cancellable) {
+      getResultMetas(results, cancellable) {
         const { scaleFactor } = St.ThemeContext.get_for_stage(global.stage);
 
         return new Promise((resolve, reject) => {
@@ -161,10 +176,8 @@ class ChromeSearchProvider {
 
     /**
      * Initiate a new search.
-     *
      * This method is called to start a new search and should return a list of
      * unique identifiers for the results.
-     *
      * If @cancellable is triggered, this method should throw an error.
      *
      * @async
@@ -178,7 +191,9 @@ class ChromeSearchProvider {
 
         let show_gemini=my_prefs.get_boolean('show-gemini');
         let show_search=my_prefs.get_boolean('show-search');
+        let show_youtube=my_prefs.get_boolean('show-youtube');
         let show_maps=my_prefs.get_boolean('show-maps');
+        let show_news=my_prefs.get_boolean('show-news');
 
       if (show_gemini) {
       identifiers.push('gemini');
@@ -186,8 +201,14 @@ class ChromeSearchProvider {
        if (show_search) {
       identifiers.push('search');
       }
+      if (show_youtube) {
+      identifiers.push('youtube');
+      }
       if (show_maps) {
       identifiers.push('maps');
+      }
+      if (show_news) {
+      identifiers.push('news');
       }
 
       // always show open-link
@@ -205,10 +226,6 @@ class ChromeSearchProvider {
 
     /**
      * Refine the current search.
-     *
-     * This method is called to refine the current search results with
-     * expanded terms and should return a subset of the original result set.
-     *
      * Implementations may use this method to refine the search results more
      * efficiently than running a new search, or simply pass the terms to the
      * implementation of `getInitialResultSet()`.
@@ -230,9 +247,7 @@ class ChromeSearchProvider {
 
     /**
      * Filter the current search.
-     *
      * This method is called to truncate the number of search results.
-     *
      * Implementations may use their own criteria for discarding results, or
      * simply return the first n-items.
      *
