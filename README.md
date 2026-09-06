@@ -17,10 +17,10 @@ After enabling this, disable and re-enable search providers,
 in Gnome settings to move this one to the top.
 
 # Installation:
-1.) Download the Zip file and unzip it. 
-2.) Rename top folder, make sure the folder name is 'SearchProvider@github.com'.
-3.) Copy the unzipped renamed folder to '~/.local/share/gnome-shell/extensions'.
-4.) Logout of Gnome and Login, then go to extension and enable.
+- Download the Zip file and unzip it.
+- Rename top folder, make sure the folder name is 'SearchProvider@github.com'.
+- Copy the unzipped renamed folder to '~/.local/share/gnome-shell/extensions'.
+- Logout of Gnome and Login, then go to extension and enable.
 
 # Credits:
 This extension was created using Zed and Inkling and is open source.
