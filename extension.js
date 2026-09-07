@@ -17,9 +17,9 @@ class ChromeSearchProvider {
     constructor(extension) {
         this._extension = extension;
         this.providers = {
-            'open-link': {
+            'link': {
                 name: 'Open Link',
-                description: 'Open link in chrome',
+                description: 'Open link',
                 icon: 'chrome',
                 getQuery: function (terms) {
                   let q = terms.join(" ");
@@ -52,10 +52,26 @@ class ChromeSearchProvider {
             },
             'youtube': {
                 name: 'Search YouTube',
-                description: 'Search YouTube',
+                description: 'Search YouTube Videos',
                 icon: 'youtube',
                 getQuery: function (terms) {
                   return `https://www.youtube.com/results?search_query=${terms.join(" ")}`;
+                }
+            },
+            'translate': {
+                name: 'Search Translate',
+                description: 'Translate with Google',
+                icon: 'translate',
+                getQuery: function (terms) {
+                  return `https://translate.google.com/?text=${terms.join(" ")}`;
+                }
+            },
+            'weather': {
+                name: 'Search Weather',
+                description: 'Search weather with Google',
+                icon: 'weather',
+                getQuery: function (terms) {
+                  return `https://www.google.com/search?q=${terms.join(" ")}+weather`;
                 }
             },
             'maps': {
@@ -193,13 +209,19 @@ class ChromeSearchProvider {
         let show_search=my_prefs.get_boolean('show-search');
         let show_youtube=my_prefs.get_boolean('show-youtube');
         let show_maps=my_prefs.get_boolean('show-maps');
+        let show_translate=my_prefs.get_boolean('show-translate');
         let show_news=my_prefs.get_boolean('show-news');
+        let show_weather=my_prefs.get_boolean('show-weather');
+        let show_link = my_prefs.get_boolean('show-link');
 
       if (show_gemini) {
       identifiers.push('gemini');
       }
        if (show_search) {
       identifiers.push('search');
+      }
+      if (show_translate) {
+      identifiers.push('translate');
       }
       if (show_youtube) {
       identifiers.push('youtube');
@@ -210,9 +232,12 @@ class ChromeSearchProvider {
       if (show_news) {
       identifiers.push('news');
       }
-
-      // always show open-link
-      identifiers.push('open-link');
+      if (show_weather) {
+      identifiers.push('weather');
+      }
+      if (show_link) {
+      identifiers.push('link');
+      }
 
       return new Promise((resolve, reject) => {
         const cancelledId = cancellable.connect(
