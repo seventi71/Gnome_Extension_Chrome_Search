@@ -18,14 +18,15 @@ This extension adds a Chrome search provider to Gnome Search.
 > [!CAUTION]
 > The provider will only populate the first 6 options that are enabled.
 
-When searching you get the option to:
-- Ask Gemini, e.g. How to make a curry?
-- Google Search, e.g. Reddit Best Linux Repo
-- Search YouTube, e.g. Focus Music
-- Search Maps, e.g. Directions to "location"
-- Search News, e.g. Local or "topic"
-- Search Translate, e.g. Hello, there stranger
-- Open Link, e.g Localhost:8000
+# Usage:
+When doing a shell search you get the following providers:
+- Ask Gemini for an AI answer ``How to make a curry?``
+- Google Search of a website ``Reddit Best Linux Repo``
+- Search YouTube for a video ``Focus Music``
+- Search Maps for directions ``Directions to high street``
+- Search News for latest news ``Local``
+- Search Translate for a language ``Hello, there stranger``
+- Open Link to open any link ``Localhost:8000``
 
 # Credits:
 This extension was created using Zed and Inkling and is open source. <br/>
