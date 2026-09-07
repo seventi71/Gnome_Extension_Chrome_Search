@@ -13,13 +13,13 @@ Placement of search provider is at the bottom of the screen by default. To move 
 NOTE: The provider will only populate the first 6 options that are enabled.
 
 When searching you get the option to:
-- 'Show Ask Gemini, e.g. How to make a curry?',
-- 'Show Google Search, e.g. Reddit Best Linux Repo',
-- 'Show YouTube, e.g. Focus Music',
-- 'Show Maps, e.g. Directions to "location"',
-- 'Show News, e.g. Local or "topic"',
-- 'Show Translate, e.g. Hello, there stranger',
-- 'Show Open Link, e.g Localhost:8000',
+- Ask Gemini, e.g. How to make a curry?
+- Google Search, e.g. Reddit Best Linux Repo
+- Search YouTube, e.g. Focus Music
+- Search Maps, e.g. Directions to "location"
+- Search News, e.g. Local or "topic"
+- Search Translate, e.g. Hello, there stranger
+- Open Link, e.g Localhost:8000
 
 # Credits:
 This extension was created using Zed and Inkling and is open source.
