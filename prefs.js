@@ -1,4 +1,5 @@
 import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 
 import {ExtensionPreferences} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
@@ -18,6 +19,7 @@ export default class SwitchFocusTypePreferences extends ExtensionPreferences {
             icon_name: 'dialog-information-symbolic',
         });
         window.add(page);
+        window.set_default_size(600, 800);
 
         const group = new Adw.PreferencesGroup({
             title: 'Shell Search',
@@ -26,6 +28,13 @@ export default class SwitchFocusTypePreferences extends ExtensionPreferences {
         page.add(group);
 
         // Create a new preferences row
+        const spinRow = new Adw.SpinRow({
+            title: 'Activation Characters',
+            subtitle: 'Minimum characters before results appear',
+            adjustment: new Gtk.Adjustment({ value: 3, lower: 1, upper: 20, step_increment: 1 }),
+        });
+        group.add(spinRow);
+
         const rowGemini = new Adw.SwitchRow({
             title: 'Show Gemini',
             subtitle: 'Show Ask Gemini, e.g. How to make a curry?',
@@ -86,6 +95,7 @@ export default class SwitchFocusTypePreferences extends ExtensionPreferences {
 
         // Pass the settings to the window
         window._settings = this.getSettings();
+        window._settings.bind('activation-chars', spinRow, 'value', Gio.SettingsBindFlags.DEFAULT);
         window._settings.bind('show-link', rowLink, 'active',
             Gio.SettingsBindFlags.DEFAULT);
         window._settings.bind('show-gemini', rowGemini, 'active',

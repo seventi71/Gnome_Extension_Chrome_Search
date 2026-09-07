@@ -1,53 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
 <schema id="org.gnome.shell.extensions.searchprovider" path="/org/gnome/shell/extensions/searchprovider/">
+        <key name="activation-chars" type="i">
+            <default>4</default>
+            <summary>Activation chars</summary>
+            <description>Number of characters before activating</description>
+        </key>
         <key name="show-link" type="b">
-                <default>true</default>
-                <summary>Link</summary>
-                <description>Show Link
-                </description>
+            <default>true</default>
+            <summary>Link</summary>
+            <description>Show Link
+            </description>
         </key>
         <key name="show-gemini" type="b">
-                <default>true</default>
-                <summary>Gemini</summary>
-                <description>Show Gemini
-                </description>
+            <default>true</default>
+            <summary>Gemini</summary>
+            <description>Show Gemini
+            </description>
         </key>
         <key name="show-search" type="b">
-                <default>true</default>
-                <summary>Search</summary>
-                <description>Show Search
-                </description>
+            <default>true</default>
+            <summary>Search</summary>
+            <description>Show Search
+            </description>
         </key>
         <key name="show-youtube" type="b">
-                <default>true</default>
-                <summary>YouTube</summary>
-                <description>Show YouTube
-                </description>
+            <default>true</default>
+            <summary>YouTube</summary>
+            <description>Show YouTube
+            </description>
         </key>
         <key name="show-maps" type="b">
-                <default>true</default>
-                <summary>Maps</summary>
-                <description>Show Maps
-                </description>
+            <default>true</default>
+            <summary>Maps</summary>
+            <description>Show Maps
+            </description>
         </key>
         <key name="show-translate" type="b">
-                <default>true</default>
-                <summary>Translate</summary>
-                <description>Show Translate
-                </description>
+            <default>true</default>
+            <summary>Translate</summary>
+            <description>Show Translate
+            </description>
         </key>
         <key name="show-news" type="b">
-                <default>true</default>
-                <summary>News</summary>
-                <description>Show News
-                </description>
+            <default>true</default>
+            <summary>News</summary>
+            <description>Show News
+            </description>
         </key>
         <key name="show-weather" type="b">
-                <default>true</default>
-                <summary>Weather</summary>
-                <description>Show Weather
-                </description>
+            <default>true</default>
+            <summary>Weather</summary>
+            <description>Show Weather
+            </description>
         </key>
 </schema>
 </schemalist>

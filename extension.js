@@ -203,6 +203,8 @@ class ChromeSearchProvider {
      */
 
     getInitialResultSet(terms, cancellable) {
+        const minChars = my_prefs.get_int('activation-chars');
+        if (terms.join(" ").length < minChars) return Promise.resolve([]);
         const identifiers = [];
 
         let show_gemini=my_prefs.get_boolean('show-gemini');
@@ -264,6 +266,8 @@ class ChromeSearchProvider {
      * @returns {Promise<string[]>}
      */
     getSubsearchResultSet(results, terms, cancellable) {
+        const minChars = my_prefs.get_int('activation-chars');
+        if (terms.join(" ").length < minChars) return Promise.resolve([]);
         if (cancellable.is_cancelled())
             throw Error('Search Cancelled');
 
